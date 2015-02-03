@@ -6,7 +6,7 @@ CMake Completion is a plugin [NetBeans](https://netbeans.org) plugin providing c
 ## Requirements
 
  - [**NetBeans 8**](https://netbeans.org)
- - **CMake** *(Optional)*
+ - [**CMake**](http://cmake.org) *(Optional)*
 
 
 ## License
