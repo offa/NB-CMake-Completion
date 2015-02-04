@@ -111,8 +111,6 @@ public class CMakeCompletionProvider implements CompletionProvider
                     Exceptions.printStackTrace(ex);
                 }
                 
-                System.out.println("<<<" + filter + ">>>");
-                
                 final Iterator<String> itr = keyWords.iterator();
                 
                 while( itr.hasNext() == true )
