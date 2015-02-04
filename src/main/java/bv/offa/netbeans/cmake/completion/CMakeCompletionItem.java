@@ -34,6 +34,12 @@ import org.netbeans.spi.editor.completion.CompletionTask;
 import org.netbeans.spi.editor.completion.support.CompletionUtilities;
 import org.openide.util.Exceptions;
 
+/**
+ * The class {@code CMakeCompletionItem} represents a
+ * {@link CompletionItem Completion item}.
+ * 
+ * @author  offa
+ */
 public class CMakeCompletionItem implements CompletionItem
 {
     private static final ImageIcon fieldIcon = null;
@@ -52,7 +58,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
     
     
-    
+    /**
+     * Action for this item.
+     * 
+     * @param component         Component for which the completion was invoced
+     * @see                     CompletionItem#defaultAction(JTextComponent) 
+     */
     @Override
     public void defaultAction(JTextComponent component)
     {
@@ -77,6 +88,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Process the key event.
+     * 
+     * @param evt       Key vent
+     * @see             CompletionItem#processKeyEvent(KeyEvent) 
+     */
     @Override
     public void processKeyEvent(KeyEvent evt)
     {
@@ -84,6 +101,14 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Get preferred visual width.
+     * 
+     * @param g             Graphics
+     * @param defaultFont   Default font
+     * @return              Rendering width ({@code >= 0})
+     * @see                 CompletionItem#getPreferredWidth(Graphics, Font) 
+     */
     @Override
     public int getPreferredWidth(Graphics g, Font defaultFont)
     {
@@ -91,6 +116,18 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Renders the item to the graphics.
+     * 
+     * @param g                 Graphics
+     * @param defaultFont       Default font
+     * @param defaultColor      Default color
+     * @param backgroundColor   Background color
+     * @param width             Width
+     * @param height            Height
+     * @param selected          Selected
+     * @see CompletionItem#render(Graphics, Font, Color, Color, int, int, boolean) 
+     */
     @Override
     public void render(Graphics g, Font defaultFont, Color defaultColor, 
             Color backgroundColor, int width, int height, boolean selected)
@@ -107,6 +144,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Creates a documentation task.
+     * 
+     * @return      Documentation task
+     * @see         CompletionItem#createDocumentationTask() 
+     */
     @Override
     public CompletionTask createDocumentationTask()
     {
@@ -116,6 +159,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Creates a tooltip task.
+     * 
+     * @return      Completion task
+     * @see         CompletionItem#createToolTipTask() 
+     */
     @Override
     public CompletionTask createToolTipTask()
     {
@@ -125,6 +174,14 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Returns whether there should be an instanstant subsititution for the
+     * component.
+     * 
+     * @param component     Component for which the completion was invoced
+     * @return              Returns if there should be an instant substitution
+     * @see                 CompletionItem#instantSubstitution(JTextComponent) 
+     */
     @Override
     public boolean instantSubstitution(JTextComponent component)
     {
@@ -132,6 +189,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Returns the item's priority.
+     * 
+     * @return      Sortpriority
+     * @see         CompletionItem#getSortPriority() 
+     */
     @Override
     public int getSortPriority()
     {
@@ -139,6 +202,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Returns a text to sort the item.
+     * 
+     * @return      Returns the text
+     * @see         CompletionItem#getSortText() 
+     */
     @Override
     public CharSequence getSortText()
     {
@@ -146,6 +215,12 @@ public class CMakeCompletionItem implements CompletionItem
     }
 
     
+    /**
+     * Returns a text used for finding of a longest common prefix.
+     * 
+     * @return      Returns the text
+     * @see         CompletionItem#getInsertPrefix() 
+     */
     @Override
     public CharSequence getInsertPrefix()
     {
@@ -153,6 +228,11 @@ public class CMakeCompletionItem implements CompletionItem
     }
     
     
+    /**
+     * Formats the {@code text} of the item, depending on it's type.
+     * 
+     * @return      Formated {@code text}
+     */
     String formatItem()
     {
         switch(type)
@@ -164,10 +244,16 @@ public class CMakeCompletionItem implements CompletionItem
     
     
     
+    /**
+     * Enumeration of item types.
+     */
     public static enum ItemType
     {
+        /** Function or macro. */
         FUNCTION,
+        /** Variable. */
         VARIABLE,
+        /** Other. */
         OTHER
     }
 }

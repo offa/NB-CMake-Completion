@@ -39,6 +39,12 @@ import org.netbeans.spi.editor.completion.support.AsyncCompletionQuery;
 import org.netbeans.spi.editor.completion.support.AsyncCompletionTask;
 import org.openide.util.Exceptions;
 
+/**
+ * The class {@code CMakeCompletionProvider} implements a
+ * {@link CompletionProvider completion provider} for CMake files.
+ * 
+ * @author  offa
+ */
 @MimeRegistrations(
 {
     @MimeRegistration(mimeType = "text/x-cmake", service = CompletionProvider.class),
@@ -55,6 +61,17 @@ public class CMakeCompletionProvider implements CompletionProvider
 
     
     
+    /**
+     * Creates a completion task for query.
+     * 
+     * @param queryType     Query type
+     * @param component     Text component
+     * @return              Completion task or {@code null} if the type is not
+     *                      supported (unsupported is everything except
+     *                      {@link CompletionProvider#COMPLETION_QUERY_TYPE
+     *                      COMPLETION_QUERY_TYPE})
+     * @see                 CompletionProvider#createTask(int, JTextComponent)
+     */
     @Override
     public CompletionTask createTask(int queryType, JTextComponent component)
     {
@@ -111,7 +128,18 @@ public class CMakeCompletionProvider implements CompletionProvider
         }, component);
     }
 
-    
+
+    /**
+     * Returns whether the completion window should popup automatically if text
+     * is typed in the component.
+     * 
+     * @param component     Component
+     * @param typedText     Typed text
+     * @return              Any combination of completion query types or
+     *                      {@code 0} if no no automatically query should be
+     *                      executed
+     * @see                 CompletionProvider#getAutoQueryTypes(JTextComponent, String) 
+     */
     @Override
     public int getAutoQueryTypes(JTextComponent component, String typedText)
     {
@@ -119,7 +147,15 @@ public class CMakeCompletionProvider implements CompletionProvider
     }
 
     
-    
+    /**
+     * Returns the position of non-whitespace character within the paragraph of
+     * the given offset.
+     * 
+     * @param doc       Document
+     * @param offset    Offset
+     * @return          Position
+     * @throws          BadLocationException If an illegal location occurs
+     */
     static int getRowFirstNonWhitespace(StyledDocument doc, int offset) throws BadLocationException
     {
         Element element = doc.getParagraphElement(offset);
@@ -149,6 +185,12 @@ public class CMakeCompletionProvider implements CompletionProvider
     }
     
     
+    /**
+     * Returns the index of of last trailing whitespace character.
+     * 
+     * @param line      Line as character array
+     * @return          Index or {@code -1} if no whitespace character is found
+     */
     static int indexOfWhitespace(char line[])
     {
         int i = line.length;
@@ -167,7 +209,12 @@ public class CMakeCompletionProvider implements CompletionProvider
     }
     
     
-    // v3.1
+    /**
+     * Returns a set of all CMake commands as specified for
+     * <i>CMake version 3.1</i>.
+     * 
+     * @return      Set of commands
+     */
     static Set<String> getCommands()
     {
         final String functions[] = new String[]
