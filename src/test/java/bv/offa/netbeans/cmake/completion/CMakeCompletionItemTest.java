@@ -29,7 +29,7 @@ public class CMakeCompletionItemTest
     @Test
     public void testFormatItem()
     {
-        CMakeCompletionItem funcItem = new CMakeCompletionItem("testName", ItemType.FUNCTION, 0, 1);
+        CMakeCompletionItem funcItem = new CMakeCompletionItem("testName()", ItemType.FUNCTION, 0, 1);
         assertEquals("testName()", funcItem.formatItem());
         
         CMakeCompletionItem varItem = new CMakeCompletionItem("testName", ItemType.VARIABLE, 0, 1);

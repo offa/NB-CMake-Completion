@@ -157,8 +157,6 @@ public class CMakeCompletionItem implements CompletionItem
     {
         switch(type)
         {
-            case FUNCTION:
-                return text + "()";
             default:
                 return text;
         }
