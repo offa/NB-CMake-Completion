@@ -127,7 +127,7 @@ public class CMakeCompletionProvider implements CompletionProvider
         {
             try
             {
-                if( doc.getText(start, 1).charAt(0) != ' ' )
+                if( Character.isWhitespace(doc.getText(start, 1).charAt(0)) == false )
                 {
                     break;
                 }

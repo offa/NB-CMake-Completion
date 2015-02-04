@@ -68,10 +68,10 @@ public class CMakeCompletionProviderTest
         assertEquals(-1, CMakeCompletionProvider.indexOfWhitespace(lines));
     }
     
+    
     @Test
     public void testGetRowFirstNonWhitespace()
     {
-        // TODO: improve exception test
         try
         {
             StyledDocument doc = makeDocument("");
@@ -80,17 +80,16 @@ public class CMakeCompletionProviderTest
             assertEquals(0, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
             doc = makeDocument(" a");
             assertEquals(1, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
-            // TODO: Implement for all WS char's
-//            doc = makeDocument("\tb");
-//            assertEquals(1, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
-//            doc = makeDocument("\n b");
-//            assertEquals(2, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            doc = makeDocument("\tb");
+            assertEquals(1, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            doc = makeDocument("\n b");
+            assertEquals(2, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1));
             doc = makeDocument("         h 4");
             assertEquals(9, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
         }
         catch( BadLocationException ex )
         {
-            fail();
+            fail(ex.getMessage());
         }
     }
     
