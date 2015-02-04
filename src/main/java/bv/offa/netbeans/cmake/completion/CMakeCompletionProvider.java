@@ -53,6 +53,7 @@ public class CMakeCompletionProvider implements CompletionProvider
     }
 
     
+    
     @Override
     public CompletionTask createTask(int queryType, JTextComponent component)
     {

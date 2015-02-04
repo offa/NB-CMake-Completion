@@ -76,24 +76,37 @@ public class CMakeCompletionItem implements CompletionItem
         }
     }
 
+    
     @Override
     public void processKeyEvent(KeyEvent evt)
     {
         /* Empty */
     }
 
+    
     @Override
     public int getPreferredWidth(Graphics g, Font defaultFont)
     {
         return CompletionUtilities.getPreferredWidth(text, null, g, defaultFont);
     }
 
+    
     @Override
-    public void render(Graphics g, Font defaultFont, Color defaultColor, Color backgroundColor, int width, int height, boolean selected)
+    public void render(Graphics g, Font defaultFont, Color defaultColor, 
+            Color backgroundColor, int width, int height, boolean selected)
     {
-        CompletionUtilities.renderHtml(fieldIcon, text, null, g, defaultFont, ( selected == true ? Color.white : fieldColor ), width, height, selected);
+        CompletionUtilities.renderHtml(fieldIcon,
+                                        text,
+                                        null,
+                                        g,
+                                        defaultFont, 
+                                        ( selected == true ? Color.white : fieldColor ),
+                                        width,
+                                        height,
+                                        selected);
     }
 
+    
     @Override
     public CompletionTask createDocumentationTask()
     {
@@ -102,6 +115,7 @@ public class CMakeCompletionItem implements CompletionItem
         return null;
     }
 
+    
     @Override
     public CompletionTask createToolTipTask()
     {
@@ -110,24 +124,28 @@ public class CMakeCompletionItem implements CompletionItem
         return null;
     }
 
+    
     @Override
     public boolean instantSubstitution(JTextComponent component)
     {
         return false;
     }
 
+    
     @Override
     public int getSortPriority()
     {
         return 0;
     }
 
+    
     @Override
     public CharSequence getSortText()
     {
         return text;
     }
 
+    
     @Override
     public CharSequence getInsertPrefix()
     {
@@ -145,6 +163,7 @@ public class CMakeCompletionItem implements CompletionItem
                 return text;
         }
     }
+    
     
     
     public static enum ItemType
