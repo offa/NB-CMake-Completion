@@ -72,7 +72,7 @@ public class CMakeCompletionItem implements CompletionItem
             StyledDocument doc = (StyledDocument) component.getDocument();
             doc.remove(dotOffset, caretOffset - dotOffset);
             
-            doc.insertString(dotOffset, formatItem(), null);
+            doc.insertString(dotOffset, formatItemText(), null);
             
             switch(type)
             {
@@ -117,7 +117,7 @@ public class CMakeCompletionItem implements CompletionItem
     @Override
     public int getPreferredWidth(Graphics g, Font defaultFont)
     {
-        return CompletionUtilities.getPreferredWidth(text, null, g, defaultFont);
+        return CompletionUtilities.getPreferredWidth(formatItemText(), null, g, defaultFont);
     }
 
     
@@ -138,7 +138,7 @@ public class CMakeCompletionItem implements CompletionItem
             Color backgroundColor, int width, int height, boolean selected)
     {
         CompletionUtilities.renderHtml(fieldIcon,
-                                        text,
+                                        formatItemText(),
                                         null,
                                         g,
                                         defaultFont, 
@@ -238,7 +238,7 @@ public class CMakeCompletionItem implements CompletionItem
      * 
      * @return      Formated {@code text}
      */
-    String formatItem()
+    String formatItemText()
     {
         switch(type)
         {

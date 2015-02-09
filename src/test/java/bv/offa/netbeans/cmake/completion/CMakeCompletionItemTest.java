@@ -30,13 +30,13 @@ public class CMakeCompletionItemTest
     public void testFormatItem()
     {
         CMakeCompletionItem funcItem = new CMakeCompletionItem("testName", ItemType.FUNCTION, 0, 1);
-        assertEquals("testName()", funcItem.formatItem());
+        assertEquals("testName()", funcItem.formatItemText());
         
         CMakeCompletionItem varItem = new CMakeCompletionItem("testName", ItemType.VARIABLE, 0, 1);
-        assertEquals("testName", varItem.formatItem());
+        assertEquals("testName", varItem.formatItemText());
         
         CMakeCompletionItem otherItem = new CMakeCompletionItem("testName", ItemType.OTHER, 0, 1);
-        assertEquals("testName", otherItem.formatItem());
+        assertEquals("testName", otherItem.formatItemText());
     }
     
 }
