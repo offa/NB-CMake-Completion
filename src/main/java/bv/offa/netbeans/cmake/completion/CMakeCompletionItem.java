@@ -74,9 +74,14 @@ public class CMakeCompletionItem implements CompletionItem
             
             doc.insertString(dotOffset, formatItem(), null);
             
-            if( type == ItemType.FUNCTION )
+            switch(type)
             {
-                component.setCaretPosition(component.getCaretPosition()-1);
+                case FUNCTION:
+                case VARIABLE_EXPANSION:
+                    component.setCaretPosition(component.getCaretPosition()-1);
+                    break;
+                default:
+                    break;
             }
             
             Completion.get().hideAll();
@@ -239,6 +244,8 @@ public class CMakeCompletionItem implements CompletionItem
         {
             case FUNCTION:
                 return text + "()";
+            case VARIABLE_EXPANSION:
+                return text + "{}";
             default:
                 return text;
         }
@@ -255,6 +262,8 @@ public class CMakeCompletionItem implements CompletionItem
         FUNCTION,
         /** Variable. */
         VARIABLE,
+        /** Variable expansion. */
+        VARIABLE_EXPANSION,
         /** Other. */
         OTHER
     }
