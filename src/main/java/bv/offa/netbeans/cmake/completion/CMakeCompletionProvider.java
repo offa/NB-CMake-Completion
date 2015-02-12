@@ -111,7 +111,25 @@ public class CMakeCompletionProvider implements CompletionProvider
                     Exceptions.printStackTrace(ex);
                 }
                 
-                resultSet.addItem(new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, caretOffset, caretOffset));
+                if( filter != null )
+                {
+                    int n;
+                    
+                    if( filter.endsWith("${") )
+                    {
+                        n = 2;
+                    }
+                    else if( filter.endsWith("$") )
+                    {
+                        n = 1;
+                    }
+                    else
+                    {
+                        n = 0;
+                    }
+                    
+                    resultSet.addItem(new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, caretOffset - n, caretOffset));
+                }
                 
                 final Iterator<String> itr = keyWords.iterator();
                 
