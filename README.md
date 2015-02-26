@@ -1,6 +1,6 @@
 # NB CMake Completion
 
-CMake Completion is a plugin [NetBeans](https://netbeans.org) plugin providing code completion for [CMake](http://cmake.org) files.
+CMake Completion is a plugin for [NetBeans](https://netbeans.org) providing code completion for [CMake](http://cmake.org) files.
 
 
 ## Requirements
