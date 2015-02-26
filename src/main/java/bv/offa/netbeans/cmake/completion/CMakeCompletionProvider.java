@@ -111,27 +111,9 @@ public class CMakeCompletionProvider implements CompletionProvider
                     Exceptions.printStackTrace(ex);
                 }
                 
-                if( filter != null )
-                {
-                    int n;
-                    
-                    if( filter.endsWith("${") )
-                    {
-                        n = 2;
-                    }
-                    else if( filter.endsWith("$") )
-                    {
-                        n = 1;
-                    }
-                    else
-                    {
-                        n = 0;
-                    }
-                    
-                    resultSet.addItem(new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, caretOffset - n, caretOffset));
-                }
                 
                 final Iterator<String> itr = keyWords.iterator();
+                int num = 0;
                 
                 while( itr.hasNext() == true )
                 {
@@ -140,7 +122,14 @@ public class CMakeCompletionProvider implements CompletionProvider
                     if( keyWord.startsWith(filter) == true )
                     {
                         resultSet.addItem(new CMakeCompletionItem(keyWord, ItemType.FUNCTION, startOffset, caretOffset));
+                        num++;
                     }
+                }
+                
+                if( filter != null && ( num == keyWords.size() || num == 0 ) )
+                {
+                    int n = getVariableExpansionOffset(filter);
+                    resultSet.addItem(new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, caretOffset - n, caretOffset));
                 }
                 
                 resultSet.finish();
@@ -202,6 +191,33 @@ public class CMakeCompletionProvider implements CompletionProvider
         }
         
         return start;
+    }
+    
+    
+    /**
+     * Returns the offset - the number of characters matching.
+     * 
+     * @param str       Input string
+     * @return          Number of matching characters
+     */
+    private int getVariableExpansionOffset(String str)
+    {
+        int n;
+        
+        if( str.endsWith("${") )
+        {
+            n = 2;
+        }
+        else if( str.endsWith("$") )
+        {
+            n = 1;
+        }
+        else
+        {
+            n = 0;
+        }
+        
+        return n;
     }
     
     
