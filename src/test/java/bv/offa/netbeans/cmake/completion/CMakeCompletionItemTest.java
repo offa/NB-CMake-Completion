@@ -35,6 +35,9 @@ public class CMakeCompletionItemTest
         CMakeCompletionItem varItem = new CMakeCompletionItem("testName", ItemType.VARIABLE, 0, 1);
         assertEquals("testName", varItem.formatItemText());
         
+        CMakeCompletionItem varExpItem = new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, 0, 1);
+        assertEquals("${}", varExpItem.formatItemText());
+        
         CMakeCompletionItem otherItem = new CMakeCompletionItem("testName", ItemType.OTHER, 0, 1);
         assertEquals("testName", otherItem.formatItemText());
     }
