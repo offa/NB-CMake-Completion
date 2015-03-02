@@ -29,17 +29,23 @@ public class CMakeCompletionItemTest
     @Test
     public void testFormatItem()
     {
-        CMakeCompletionItem funcItem = new CMakeCompletionItem("testName", ItemType.FUNCTION, 0, 1);
+        CMakeCompletionItem funcItem = createItem(ItemType.FUNCTION);
         assertEquals("testName()", funcItem.formatItemText());
         
-        CMakeCompletionItem varItem = new CMakeCompletionItem("testName", ItemType.VARIABLE, 0, 1);
+        CMakeCompletionItem varItem = createItem(ItemType.VARIABLE);
         assertEquals("testName", varItem.formatItemText());
         
-        CMakeCompletionItem varExpItem = new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, 0, 1);
-        assertEquals("${}", varExpItem.formatItemText());
+        CMakeCompletionItem varExpItem = createItem(ItemType.VARIABLE_EXPANSION);
+        assertEquals("testName{}", varExpItem.formatItemText());
         
-        CMakeCompletionItem otherItem = new CMakeCompletionItem("testName", ItemType.OTHER, 0, 1);
+        CMakeCompletionItem otherItem = createItem(ItemType.OTHER);
         assertEquals("testName", otherItem.formatItemText());
+    }
+    
+    
+    private CMakeCompletionItem createItem(ItemType type)
+    {
+        return new CMakeCompletionItem("testName", type, 0, 1);
     }
     
 }
