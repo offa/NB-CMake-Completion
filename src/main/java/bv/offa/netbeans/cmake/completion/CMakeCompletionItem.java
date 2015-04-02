@@ -157,8 +157,6 @@ public class CMakeCompletionItem implements CompletionItem
     @Override
     public CompletionTask createDocumentationTask()
     {
-        /* Empty */
-        
         return null;
     }
 
@@ -172,8 +170,6 @@ public class CMakeCompletionItem implements CompletionItem
     @Override
     public CompletionTask createToolTipTask()
     {
-        /* Empty */
-        
         return null;
     }
 
