@@ -71,7 +71,6 @@ public class CMakeCompletionItem implements CompletionItem
         {
             StyledDocument doc = (StyledDocument) component.getDocument();
             doc.remove(dotOffset, caretOffset - dotOffset);
-            
             doc.insertString(dotOffset, formatItemText(), null);
             
             switch(type)
