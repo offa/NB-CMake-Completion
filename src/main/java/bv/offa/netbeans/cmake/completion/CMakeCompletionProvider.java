@@ -375,7 +375,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "ctest_upload" 
         };
         
-        Set<String> cmds = new HashSet<String>(functions.length);
+        Set<String> cmds = new HashSet<>(functions.length);
         Collections.addAll(cmds, functions);
         
         return cmds;
