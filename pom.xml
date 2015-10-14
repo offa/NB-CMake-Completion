@@ -48,7 +48,6 @@
                 </configuration>
             </plugin>
             
-            <!-- Ensure JDK 6 API compatibility -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>
