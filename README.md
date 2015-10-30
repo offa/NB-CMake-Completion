@@ -3,14 +3,14 @@
 [![Build Status](https://travis-ci.org/offa/NB-CMake-Completion.svg?branch=master)](https://travis-ci.org/offa/NB-CMake-Completion)
 [![GitHub release](https://img.shields.io/github/release/offa/NB-Cmake-Completion.svg)](https://github.com/offa/NB-Cmake-Completion/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
-[![NetBeans](https://img.shields.io/badge/netbeans-8.0-lightgrey.svg)](https://netbeans.org/)
+[![NetBeans](https://img.shields.io/badge/netbeans-8.1-lightgrey.svg)](https://netbeans.org/)
 
 CMake Completion is a plugin for [NetBeans](https://netbeans.org) providing code completion for [CMake](http://cmake.org) files.
 
 
 ## Requirements
 
- - [**NetBeans 8**](https://netbeans.org)
+ - [**NetBeans 8.1**](https://netbeans.org)
  - [**CMake**](http://cmake.org) *(Optional)*
 
 
