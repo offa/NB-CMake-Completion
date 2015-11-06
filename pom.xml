@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>bv.offa</groupId>
     <artifactId>CMakeCompletion</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.5-SNAPSHOT</version>
     <packaging>nbm</packaging>
     
     <name>CMake Completion</name>
@@ -11,7 +11,7 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <nb.version>RELEASE81-BETA</nb.version>
+        <nb.version>RELEASE81</nb.version>
     </properties>
 
     
