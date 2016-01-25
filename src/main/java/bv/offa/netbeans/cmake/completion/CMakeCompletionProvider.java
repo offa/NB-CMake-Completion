@@ -1,6 +1,6 @@
 /*
  * NB CMake Completion - CMake completion for NetBeans.
- * Copyright (C) 2015  offa
+ * Copyright (C) 2015-2016  offa
  * 
  * This file is part of NB CMake Completion.
  *
