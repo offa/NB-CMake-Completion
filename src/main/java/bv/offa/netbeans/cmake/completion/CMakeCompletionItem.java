@@ -42,8 +42,8 @@ import org.openide.util.Exceptions;
  */
 public class CMakeCompletionItem implements CompletionItem
 {
-    private static final ImageIcon fieldIcon = null;
-    private static final Color fieldColor = Color.decode("0x0000B2");
+    private static final ImageIcon FIELD_ICON = null;
+    private static final Color FIELD_COLOR = Color.decode("0x0000B2");
     private final String text;
     private final ItemType type;
     private final int dotOffset;
@@ -136,12 +136,12 @@ public class CMakeCompletionItem implements CompletionItem
     public void render(Graphics g, Font defaultFont, Color defaultColor, 
             Color backgroundColor, int width, int height, boolean selected)
     {
-        CompletionUtilities.renderHtml(fieldIcon,
+        CompletionUtilities.renderHtml(FIELD_ICON,
                                         formatItemText(),
                                         null,
                                         g,
                                         defaultFont, 
-                                        ( selected == true ? Color.white : fieldColor ),
+                                        ( selected == true ? Color.white : FIELD_COLOR ),
                                         width,
                                         height,
                                         selected);
