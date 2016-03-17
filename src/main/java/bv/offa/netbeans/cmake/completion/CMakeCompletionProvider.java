@@ -256,9 +256,9 @@ public class CMakeCompletionProvider implements CompletionProvider
         final String functions[] = new String[]
         {
             // Normal commands
-            "add_compile_options", 
-            "add_custom_command", 
-            "add_custom_target", 
+            "add_compile_options",
+            "add_custom_command",
+            "add_custom_target",
             "add_definitions",
             "add_dependencies",
             "add_executable",
@@ -270,8 +270,10 @@ public class CMakeCompletionProvider implements CompletionProvider
             "build_command",
             "cmake_host_system_information",
             "cmake_minimum_required",
+            "cmake_parse_arguments",
             "cmake_policy",
             "configure_file",
+            "continue",
             "create_test_sourcelist",
             "define_property",
             "elseif",
@@ -308,9 +310,9 @@ public class CMakeCompletionProvider implements CompletionProvider
             "include",
             "install",
             "link_directories",
+            "link_libraries",
             "list",
             "load_cache",
-            "load_command",
             "macro",
             "mark_as_advanced",
             "math",
@@ -349,7 +351,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "install_files",
             "install_programs",
             "install_targets",
-            "link_libraries",
+            "load_command",
             "make_directory",
             "output_required_files",
             "remove",
@@ -372,7 +374,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "ctest_submit",
             "ctest_test",
             "ctest_update",
-            "ctest_upload" 
+            "ctest_upload"
         };
         
         Set<String> cmds = new HashSet<>(functions.length);
