@@ -27,6 +27,10 @@
                     <homePageUrl>https://github.com/offa/NB-CMake-Completion</homePageUrl>
                     <licenseName>GPLv3</licenseName>
                     <licenseFile>./LICENSE</licenseFile>
+                    
+                    <keystore>${nb.module.signature.keystore}</keystore>
+                    <keystorealias>${nb.module.signature.alias}</keystorealias>
+                    <keystorepassword>${nb.module.signature.password}</keystorepassword>
                 </configuration>
             </plugin>
             <plugin>
