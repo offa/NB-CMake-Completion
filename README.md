@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
 [![NetBeans](https://img.shields.io/badge/netbeans-8.1-lightgrey.svg)](http://plugins.netbeans.org/plugin/63633/cmake-completion)
 
-CMake Completion is a plugin for [NetBeans](https://netbeans.org) providing code completion for [CMake](http://cmake.org) files.
+CMake Completion provides code completion for CMake files.
 
 
 ## Requirements
