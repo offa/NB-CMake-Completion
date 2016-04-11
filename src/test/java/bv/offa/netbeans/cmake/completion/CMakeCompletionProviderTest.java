@@ -31,7 +31,7 @@ import org.netbeans.spi.editor.completion.CompletionProvider;
 public class CMakeCompletionProviderTest
 {
     @Test
-    public void testCreateTask()
+    public void createTaskSettings()
     {
         CMakeCompletionProvider cp = new CMakeCompletionProvider();
         final JTextComponent tc = null;
@@ -44,7 +44,7 @@ public class CMakeCompletionProviderTest
     
 
     @Test
-    public void testIndexOfWhitespace()
+    public void indexOfWhitespace()
     {
         char lines[] = "a3Ce ".toCharArray();
         assertEquals(4, CMakeCompletionProvider.indexOfWhitespace(lines));
@@ -70,7 +70,7 @@ public class CMakeCompletionProviderTest
     
     
     @Test
-    public void testGetRowFirstNonWhitespace()
+    public void getRowFirstNonWhitespace()
     {
         try
         {

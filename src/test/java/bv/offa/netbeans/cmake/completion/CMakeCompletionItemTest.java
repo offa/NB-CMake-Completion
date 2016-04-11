@@ -27,7 +27,7 @@ import org.junit.Test;
 public class CMakeCompletionItemTest
 {
     @Test
-    public void testFormatItem()
+    public void formatItem()
     {
         CMakeCompletionItem funcItem = createItem(ItemType.FUNCTION);
         assertEquals("testName()", funcItem.formatItemText());
