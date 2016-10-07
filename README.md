@@ -4,6 +4,7 @@
 [![GitHub release](https://img.shields.io/github/release/offa/NB-Cmake-Completion.svg)](https://github.com/offa/NB-Cmake-Completion/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
 [![NetBeans](https://img.shields.io/badge/netbeans-8.1-lightgrey.svg)](http://plugins.netbeans.org/plugin/63633/cmake-completion)
+![Java](https://img.shields.io/badge/java-1.7-green.svg)
 
 CMake Completion provides code completion for CMake files.
 
