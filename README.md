@@ -14,6 +14,20 @@ CMake Completion provides code completion for CMake files.
  - [**NetBeans 8.1**](https://netbeans.org)
  - [**CMake**](http://cmake.org) *(Optional)*
 
+# Installation
+
+The Plugin is available through the **Plugin Manager** (*Tools → Plugins → Available Plugins*).
+
+As an alternative, it’s also possible to download the *NBM* manually from the [**NetBeans Plugin Portal**](http://plugins.netbeans.org/plugin/63633/cmake-completion).
+
+#### [`Signature Info`](https://github.com/offa/NB-CMake-Completion/wiki/NBM-Signature)
+
+
+# Update
+
+Updates are delivered as usual by the **NetBeans Updater**.
+
+
 
 ## License
 
