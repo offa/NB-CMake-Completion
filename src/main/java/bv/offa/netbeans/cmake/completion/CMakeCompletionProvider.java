@@ -247,7 +247,7 @@ public class CMakeCompletionProvider implements CompletionProvider
     
     /**
      * Returns a set of all CMake commands as specified for
-     * <i>CMake version 3.1</i>.
+     * <i>CMake version 3.7</i>.
      * 
      * @return      Set of commands
      */
@@ -255,7 +255,7 @@ public class CMakeCompletionProvider implements CompletionProvider
     {
         final String functions[] = new String[]
         {
-            // Normal commands
+            // Normal Commands
             "add_compile_options",
             "add_custom_command",
             "add_custom_target",
@@ -344,7 +344,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "unset",
             "variable_watch",
             "while",
-            // Deprecated
+            // Deprecated Commands
             "build_name",
             "exec_program",
             "export_library_dependencies",
@@ -361,7 +361,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "utility_source",
             "variable_requires",
             "write_file",
-            // CTest
+            // CTest Commands
             "ctest_build",
             "ctest_configure",
             "ctest_coverage",
