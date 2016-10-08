@@ -9,7 +9,7 @@
 CMake Completion provides code completion for CMake files.
 
 
-## Requirements
+# Requirements
 
  - [**NetBeans 8.2**](https://netbeans.org)
  - [**CMake**](http://cmake.org) *(Optional)*
@@ -28,8 +28,12 @@ As an alternative, it’s also possible to download the *NBM* manually from the 
 Updates are delivered as usual by the **NetBeans Updater**.
 
 
+# Available CMake Commands
 
-## License
+All Commands of ***CMake 3.7*** are available for completion.
+
+
+# License
 
 **GNU General Public License (GPL)**
 
