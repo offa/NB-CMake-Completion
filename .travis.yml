@@ -5,7 +5,7 @@ dist: trusty
 jdk:
     - openjdk7
     - openjdk8
-    - oraclejdk7
+    #- oraclejdk7 # Workaround for #9
     - oraclejdk8
 
 cache:
