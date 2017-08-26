@@ -1,7 +1,7 @@
 /*
  * NB CMake Completion - CMake completion for NetBeans.
  * Copyright (C) 2015-2017  offa
- * 
+ *
  * This file is part of NB CMake Completion.
  *
  * NB CMake Completion is free software: you can redistribute it and/or modify
@@ -42,28 +42,26 @@ import org.openide.util.Exceptions;
 /**
  * The class {@code CMakeCompletionProvider} implements a
  * {@link CompletionProvider completion provider} for CMake files.
- * 
+ *
  * @author  offa
  */
-@MimeRegistrations(
-{
+@MimeRegistrations({
     @MimeRegistration(mimeType = "text/x-cmake", service = CompletionProvider.class),
     @MimeRegistration(mimeType = "text/x-cmake-include", service = CompletionProvider.class)
-})
+    })
 public class CMakeCompletionProvider implements CompletionProvider
 {
     private final Set<String> keyWords;
-    
+
     public CMakeCompletionProvider()
     {
         this.keyWords = getCommands();
     }
 
-    
-    
+
     /**
      * Creates a completion task for query.
-     * 
+     *
      * @param queryType     Query type
      * @param component     Text component
      * @return              Completion task or {@code null} if the type is not
@@ -79,7 +77,7 @@ public class CMakeCompletionProvider implements CompletionProvider
         {
             return null;
         }
-        
+
         return new AsyncCompletionTask(new AsyncCompletionQuery()
         {
             @Override
@@ -87,16 +85,16 @@ public class CMakeCompletionProvider implements CompletionProvider
             {
                 String filter = null;
                 int startOffset = caretOffset - 1;
-                
+
                 try
                 {
                     final StyledDocument styledDoc = (StyledDocument) doc;
                     final int lineStartOffset = getRowFirstNonWhitespace(styledDoc, caretOffset);
                     final char line[] = styledDoc.getText(lineStartOffset, caretOffset - lineStartOffset).toCharArray();
                     final int whiteSpaceOffset = indexOfWhitespace(line);
-                    
+
                     filter = String.valueOf(line, whiteSpaceOffset + 1, line.length - whiteSpaceOffset - 1);
-                    
+
                     if( whiteSpaceOffset > 0 )
                     {
                         startOffset = lineStartOffset + whiteSpaceOffset + 1;
@@ -110,28 +108,27 @@ public class CMakeCompletionProvider implements CompletionProvider
                 {
                     Exceptions.printStackTrace(ex);
                 }
-                
-                
+
                 final Iterator<String> itr = keyWords.iterator();
                 int num = 0;
-                
+
                 while( itr.hasNext() == true )
                 {
                     final String keyWord = itr.next();
-                    
+
                     if( keyWord.startsWith(filter) == true )
                     {
                         resultSet.addItem(new CMakeCompletionItem(keyWord, ItemType.FUNCTION, startOffset, caretOffset));
                         num++;
                     }
                 }
-                
-                if( filter != null && ( num == keyWords.size() || num == 0 ) )
+
+                if( filter != null && (num == keyWords.size() || num == 0) )
                 {
                     int n = getVariableExpansionOffset(filter);
                     resultSet.addItem(new CMakeCompletionItem("$", ItemType.VARIABLE_EXPANSION, caretOffset - n, caretOffset));
                 }
-                
+
                 resultSet.finish();
             }
         }, component);
@@ -141,7 +138,7 @@ public class CMakeCompletionProvider implements CompletionProvider
     /**
      * Returns whether the completion window should popup automatically if text
      * is typed in the component.
-     * 
+     *
      * @param component     Component
      * @param typedText     Typed text
      * @return              Any combination of completion query types or
@@ -155,11 +152,11 @@ public class CMakeCompletionProvider implements CompletionProvider
         return 0;
     }
 
-    
+
     /**
      * Returns the position of non-whitespace character within the paragraph of
      * the given offset.
-     * 
+     *
      * @param doc       Document
      * @param offset    Offset
      * @return          Position
@@ -169,7 +166,7 @@ public class CMakeCompletionProvider implements CompletionProvider
     {
         Element element = doc.getParagraphElement(offset);
         int start = element.getStartOffset();
-        
+
         while( start + 1 < element.getEndOffset() )
         {
             try
@@ -181,29 +178,29 @@ public class CMakeCompletionProvider implements CompletionProvider
             }
             catch( BadLocationException ex )
             {
-                throw (BadLocationException) new BadLocationException("Calling getText(" 
-                        + start + ", " + (start + 1 ) + ") on document of length " 
+                throw (BadLocationException) new BadLocationException("Calling getText("
+                        + start + ", " + (start + 1) + ") on document of length " 
                         + doc.getLength(), start)
-                            .initCause(ex);
+                        .initCause(ex);
             }
-            
+
             start++;
         }
-        
+
         return start;
     }
-    
-    
+
+
     /**
      * Returns the offset - the number of characters matching.
-     * 
+     *
      * @param str       Input string
      * @return          Number of matching characters
      */
     private int getVariableExpansionOffset(String str)
     {
         int n;
-        
+
         if( str.endsWith("${") )
         {
             n = 2;
@@ -216,46 +213,91 @@ public class CMakeCompletionProvider implements CompletionProvider
         {
             n = 0;
         }
-        
+
         return n;
     }
-    
-    
+
+
     /**
      * Returns the index of of last trailing whitespace character.
-     * 
+     *
      * @param line      Line as character array
      * @return          Index or {@code -1} if no whitespace character is found
      */
     static int indexOfWhitespace(char line[])
     {
         int i = line.length;
-        
+
         while( --i > -1 )
         {
             final char c = line[i];
-            
+
             if( Character.isWhitespace(c) == true )
             {
                 return i;
             }
         }
-        
+
         return -1;
     }
-    
-    
+
+
     /**
-     * Returns a set of all CMake commands as specified for
-     * <i>CMake version 3.7</i>.
-     * 
+     * Returns a set of all CMake commands.
+     *
      * @return      Set of commands
      */
     static Set<String> getCommands()
     {
         final String functions[] = new String[]
         {
-            // Normal Commands
+            // Scripting Commands
+            "break",
+            "cmake_host_system_information",
+            "cmake_minimum_required",
+            "cmake_parse_arguments",
+            "cmake_policy",
+            "configure_file",
+            "continue",
+            "elseif",
+            "else",
+            "endforeach",
+            "endfunction",
+            "endif",
+            "endmacro",
+            "endwhile",
+            "execute_process",
+            "file",
+            "find_file",
+            "find_library",
+            "find_package",
+            "find_path",
+            "find_program",
+            "foreach",
+            "function",
+            "get_cmake_property",
+            "get_directory_property",
+            "get_filename_component",
+            "get_property",
+            "if",
+            "include",
+            "list",
+            "macro",
+            "mark_as_advanced",
+            "math",
+            "message",
+            "option",
+            "return",
+            "separate_arguments",
+            "set_directory_properties",
+            "set_property",
+            "set",
+            "site_name",
+            "string",
+            "unset",
+            "variable_watch",
+            "while",
+            // Project Commands
             "add_compile_options",
             "add_custom_command",
             "add_custom_target",
@@ -266,73 +308,31 @@ public class CMakeCompletionProvider implements CompletionProvider
             "add_subdirectory",
             "add_test",
             "aux_source_directory",
-            "break",
             "build_command",
-            "cmake_host_system_information",
-            "cmake_minimum_required",
-            "cmake_parse_arguments",
-            "cmake_policy",
-            "configure_file",
-            "continue",
             "create_test_sourcelist",
             "define_property",
-            "elseif",
-            "else",
             "enable_language",
             "enable_testing",
-            "endforeach",
-            "endfunction",
-            "endif",
-            "endmacro",
-            "endwhile",
-            "execute_process",
             "export",
-            "file",
-            "find_file",
-            "find_library",
-            "find_package",
-            "find_path",
-            "find_program",
             "fltk_wrap_ui",
-            "foreach",
-            "function",
-            "get_cmake_property",
-            "get_directory_property",
-            "get_filename_component",
-            "get_property",
             "get_source_file_property",
             "get_target_property",
             "get_test_property",
-            "if",
             "include_directories",
             "include_external_msproject",
             "include_regular_expression",
-            "include",
             "install",
             "link_directories",
             "link_libraries",
-            "list",
             "load_cache",
-            "macro",
-            "mark_as_advanced",
-            "math",
-            "message",
-            "option",
             "project",
             "qt_wrap_cpp",
             "qt_wrap_ui",
             "remove_definitions",
-            "return",
-            "separate_arguments",
-            "set_directory_properties",
-            "set_property",
-            "set",
             "set_source_files_properties",
             "set_target_properties",
             "set_tests_properties",
-            "site_name",
             "source_group",
-            "string",
             "target_compile_definitions",
             "target_compile_features",
             "target_compile_options",
@@ -341,9 +341,20 @@ public class CMakeCompletionProvider implements CompletionProvider
             "target_sources",
             "try_compile",
             "try_run",
-            "unset",
-            "variable_watch",
-            "while",
+            // CTest Commands
+            "ctest_build",
+            "ctest_configure",
+            "ctest_coverage",
+            "ctest_empty_binary_directory",
+            "ctest_memcheck",
+            "ctest_read_custom_files",
+            "ctest_run_script",
+            "ctest_sleep",
+            "ctest_start",
+            "ctest_submit",
+            "ctest_test",
+            "ctest_update",
+            "ctest_upload",
             // Deprecated Commands
             "build_name",
             "exec_program",
@@ -361,26 +372,13 @@ public class CMakeCompletionProvider implements CompletionProvider
             "utility_source",
             "variable_requires",
             "write_file",
-            // CTest Commands
-            "ctest_build",
-            "ctest_configure",
-            "ctest_coverage",
-            "ctest_empty_binary_directory",
-            "ctest_memcheck",
-            "ctest_read_custom_files",
-            "ctest_run_script",
-            "ctest_sleep",
-            "ctest_start",
-            "ctest_submit",
-            "ctest_test",
-            "ctest_update",
-            "ctest_upload"
         };
-        
+
         Set<String> cmds = new HashSet<>(functions.length);
         Collections.addAll(cmds, functions);
-        
+
         return cmds;
     }
+
 
 }
