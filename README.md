@@ -30,7 +30,7 @@ Updates are delivered as usual by the **NetBeans Updater**.
 
 # Available CMake Commands
 
-All Commands of ***CMake 3.7*** are available for completion.
+All Commands of ***CMake 3.9*** are available for completion.
 
 
 # License
