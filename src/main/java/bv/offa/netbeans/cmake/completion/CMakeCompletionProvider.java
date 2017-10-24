@@ -144,7 +144,7 @@ public class CMakeCompletionProvider implements CompletionProvider
      * @return              Any combination of completion query types or
      *                      {@code 0} if no no automatically query should be
      *                      executed
-     * @see                 CompletionProvider#getAutoQueryTypes(JTextComponent, String) 
+     * @see                 CompletionProvider#getAutoQueryTypes(JTextComponent, String)
      */
     @Override
     public int getAutoQueryTypes(JTextComponent component, String typedText)
@@ -179,7 +179,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             catch( BadLocationException ex )
             {
                 throw (BadLocationException) new BadLocationException("Calling getText("
-                        + start + ", " + (start + 1) + ") on document of length " 
+                        + start + ", " + (start + 1) + ") on document of length "
                         + doc.getLength(), start)
                         .initCause(ex);
             }
