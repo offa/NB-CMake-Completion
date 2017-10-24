@@ -1,7 +1,7 @@
 /*
  * NB CMake Completion - CMake completion for NetBeans.
  * Copyright (C) 2015-2017  offa
- * 
+ *
  * This file is part of NB CMake Completion.
  *
  * NB CMake Completion is free software: you can redistribute it and/or modify
@@ -24,8 +24,8 @@ import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.StyledDocument;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import org.netbeans.spi.editor.completion.CompletionProvider;
 
 public class CMakeCompletionProviderTest
@@ -35,13 +35,13 @@ public class CMakeCompletionProviderTest
     {
         CMakeCompletionProvider cp = new CMakeCompletionProvider();
         final JTextComponent tc = null;
-        
+
         assertNotNull(cp.createTask(CompletionProvider.COMPLETION_QUERY_TYPE, tc));
         assertNull(cp.createTask(CompletionProvider.DOCUMENTATION_QUERY_TYPE, tc));
         assertNull(cp.createTask(CompletionProvider.TOOLTIP_QUERY_TYPE, tc));
         assertNull(cp.createTask(CompletionProvider.COMPLETION_ALL_QUERY_TYPE, tc));
     }
-    
+
 
     @Test
     public void indexOfWhitespace()
@@ -67,8 +67,8 @@ public class CMakeCompletionProviderTest
         lines = "".toCharArray();
         assertEquals(-1, CMakeCompletionProvider.indexOfWhitespace(lines));
     }
-    
-    
+
+
     @Test
     public void getRowFirstNonWhitespace()
     {
@@ -92,13 +92,13 @@ public class CMakeCompletionProviderTest
             fail(ex.getMessage());
         }
     }
-    
-    
+
+
     private StyledDocument makeDocument(String str)
     {
         final JTextComponent comp = new JTextPane();
         comp.setText(str);
-        
+
         return (StyledDocument) comp.getDocument();
     }
 }

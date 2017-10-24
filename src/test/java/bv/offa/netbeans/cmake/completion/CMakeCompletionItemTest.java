@@ -1,7 +1,7 @@
 /*
  * NB CMake Completion - CMake completion for NetBeans.
  * Copyright (C) 2015-2017  offa
- * 
+ *
  * This file is part of NB CMake Completion.
  *
  * NB CMake Completion is free software: you can redistribute it and/or modify
@@ -21,8 +21,8 @@
 package bv.offa.netbeans.cmake.completion;
 
 import bv.offa.netbeans.cmake.completion.CMakeCompletionItem.ItemType;
-import static org.junit.Assert.*;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class CMakeCompletionItemTest
 {
@@ -31,21 +31,21 @@ public class CMakeCompletionItemTest
     {
         CMakeCompletionItem funcItem = createItem(ItemType.FUNCTION);
         assertEquals("testName()", funcItem.formatItemText());
-        
+
         CMakeCompletionItem varItem = createItem(ItemType.VARIABLE);
         assertEquals("testName", varItem.formatItemText());
-        
+
         CMakeCompletionItem varExpItem = createItem(ItemType.VARIABLE_EXPANSION);
         assertEquals("testName{}", varExpItem.formatItemText());
-        
+
         CMakeCompletionItem otherItem = createItem(ItemType.OTHER);
         assertEquals("testName", otherItem.formatItemText());
     }
-    
-    
+
+
     private CMakeCompletionItem createItem(ItemType type)
     {
         return new CMakeCompletionItem("testName", type, 0, 1);
     }
-    
+
 }
