@@ -281,6 +281,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "get_property",
             "if",
             "include",
+            "include_guard",
             "list",
             "macro",
             "mark_as_advanced",
@@ -371,7 +372,7 @@ public class CMakeCompletionProvider implements CompletionProvider
             "use_mangled_mesa",
             "utility_source",
             "variable_requires",
-            "write_file",
+            "write_file"
         };
 
         Set<String> cmds = new HashSet<>(functions.length);
