@@ -161,7 +161,7 @@
         <dependency>
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-modules-editor-completion</artifactId>
-            <version>RELEASE82</version>
+            <version>${nb.version}</version>
         </dependency>
 
         <!-- Test Dependencies -->
