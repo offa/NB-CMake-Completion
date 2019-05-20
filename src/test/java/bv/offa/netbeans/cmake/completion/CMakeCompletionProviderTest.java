@@ -34,13 +34,11 @@ public class CMakeCompletionProviderTest
     @Test
     public void createTaskSettings()
     {
-        CMakeCompletionProvider cp = new CMakeCompletionProvider();
-        final JTextComponent tc = null;
-
-        assertThat(cp.createTask(CompletionProvider.COMPLETION_QUERY_TYPE, tc)).isNotNull();
-        assertThat(cp.createTask(CompletionProvider.DOCUMENTATION_QUERY_TYPE, tc)).isNull();
-        assertThat(cp.createTask(CompletionProvider.TOOLTIP_QUERY_TYPE, tc)).isNull();
-        assertThat(cp.createTask(CompletionProvider.COMPLETION_ALL_QUERY_TYPE, tc)).isNull();
+        final CMakeCompletionProvider cp = new CMakeCompletionProvider();
+        assertThat(cp.createTask(CompletionProvider.COMPLETION_QUERY_TYPE, null)).isNotNull();
+        assertThat(cp.createTask(CompletionProvider.DOCUMENTATION_QUERY_TYPE, null)).isNull();
+        assertThat(cp.createTask(CompletionProvider.TOOLTIP_QUERY_TYPE, null)).isNull();
+        assertThat(cp.createTask(CompletionProvider.COMPLETION_ALL_QUERY_TYPE, null)).isNull();
     }
 
 
