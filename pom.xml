@@ -183,5 +183,11 @@
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>0.44</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>

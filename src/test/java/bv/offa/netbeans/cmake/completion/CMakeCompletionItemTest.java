@@ -21,7 +21,7 @@
 package bv.offa.netbeans.cmake.completion;
 
 import bv.offa.netbeans.cmake.completion.CMakeCompletionItem.ItemType;
-import static org.junit.jupiter.api.Assertions.*;
+import static com.google.common.truth.Truth.assertThat;
 import org.junit.jupiter.api.Test;
 
 public class CMakeCompletionItemTest
@@ -30,16 +30,16 @@ public class CMakeCompletionItemTest
     public void formatItem()
     {
         CMakeCompletionItem funcItem = createItem(ItemType.FUNCTION);
-        assertEquals("testName()", funcItem.formatItemText());
+        assertThat(funcItem.formatItemText()).isEqualTo("testName()");
 
         CMakeCompletionItem varItem = createItem(ItemType.VARIABLE);
-        assertEquals("testName", varItem.formatItemText());
+        assertThat(varItem.formatItemText()).isEqualTo("testName");
 
         CMakeCompletionItem varExpItem = createItem(ItemType.VARIABLE_EXPANSION);
-        assertEquals("testName{}", varExpItem.formatItemText());
+        assertThat(varExpItem.formatItemText()).isEqualTo("testName{}");
 
         CMakeCompletionItem otherItem = createItem(ItemType.OTHER);
-        assertEquals("testName", otherItem.formatItemText());
+        assertThat(otherItem.formatItemText()).isEqualTo("testName");
     }
 
 

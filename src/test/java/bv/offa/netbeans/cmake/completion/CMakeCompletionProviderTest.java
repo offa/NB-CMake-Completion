@@ -20,6 +20,7 @@
 
 package bv.offa.netbeans.cmake.completion;
 
+import static com.google.common.truth.Truth.assertThat;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
@@ -36,10 +37,10 @@ public class CMakeCompletionProviderTest
         CMakeCompletionProvider cp = new CMakeCompletionProvider();
         final JTextComponent tc = null;
 
-        assertNotNull(cp.createTask(CompletionProvider.COMPLETION_QUERY_TYPE, tc));
-        assertNull(cp.createTask(CompletionProvider.DOCUMENTATION_QUERY_TYPE, tc));
-        assertNull(cp.createTask(CompletionProvider.TOOLTIP_QUERY_TYPE, tc));
-        assertNull(cp.createTask(CompletionProvider.COMPLETION_ALL_QUERY_TYPE, tc));
+        assertThat(cp.createTask(CompletionProvider.COMPLETION_QUERY_TYPE, tc)).isNotNull();
+        assertThat(cp.createTask(CompletionProvider.DOCUMENTATION_QUERY_TYPE, tc)).isNull();
+        assertThat(cp.createTask(CompletionProvider.TOOLTIP_QUERY_TYPE, tc)).isNull();
+        assertThat(cp.createTask(CompletionProvider.COMPLETION_ALL_QUERY_TYPE, tc)).isNull();
     }
 
 
@@ -47,25 +48,25 @@ public class CMakeCompletionProviderTest
     public void indexOfWhitespace()
     {
         char lines[] = "a3Ce ".toCharArray();
-        assertEquals(4, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
         lines = "aBc.,-_ d".toCharArray();
-        assertEquals(7, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(7);
         lines = " A.Qc".toCharArray();
-        assertEquals(0, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
         lines = "7-bc".toCharArray();
-        assertEquals(-1, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(-1);
         lines = "a Br_0E f".toCharArray();
-        assertEquals(7, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(7);
         lines = "a B-\t7a".toCharArray();
-        assertEquals(4, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
         lines = "h G-\nu&".toCharArray();
-        assertEquals(4, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
         lines = "\t".toCharArray();
-        assertEquals(0, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
         lines = " ".toCharArray();
-        assertEquals(0, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
         lines = "".toCharArray();
-        assertEquals(-1, CMakeCompletionProvider.indexOfWhitespace(lines));
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(-1);
     }
 
 
@@ -75,17 +76,17 @@ public class CMakeCompletionProviderTest
         try
         {
             StyledDocument doc = makeDocument("");
-            assertEquals(0, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
             doc = makeDocument("abc");
-            assertEquals(0, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
             doc = makeDocument(" a");
-            assertEquals(1, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
             doc = makeDocument("\tb");
-            assertEquals(1, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
             doc = makeDocument("\n b");
-            assertEquals(2, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1)).isEqualTo(2);
             doc = makeDocument("         h 4");
-            assertEquals(9, CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0));
+            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(9);
         }
         catch( BadLocationException ex )
         {
