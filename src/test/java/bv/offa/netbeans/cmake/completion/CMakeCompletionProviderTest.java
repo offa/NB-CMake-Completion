@@ -24,7 +24,6 @@ import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.StyledDocument;
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.netbeans.spi.editor.completion.CompletionProvider;
 
@@ -44,26 +43,16 @@ public class CMakeCompletionProviderTest
     @Test
     public void indexOfWhitespace()
     {
-        char lines[] = "a3Ce ".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
-        lines = "aBc.,-_ d".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(7);
-        lines = " A.Qc".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
-        lines = "7-bc".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(-1);
-        lines = "a Br_0E f".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(7);
-        lines = "a B-\t7a".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
-        lines = "h G-\nu&".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(4);
-        lines = "\t".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
-        lines = " ".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(0);
-        lines = "".toCharArray();
-        assertThat(CMakeCompletionProvider.indexOfWhitespace(lines)).isEqualTo(-1);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("a3Ce "))).isEqualTo(4);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("aBc.,-_ d"))).isEqualTo(7);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine(" A.Qc"))).isEqualTo(0);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("7-bc"))).isEqualTo(-1);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("a Br_0E f"))).isEqualTo(7);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("a B-\t7a"))).isEqualTo(4);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("h G-\nu&"))).isEqualTo(4);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine("\t"))).isEqualTo(0);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine(" "))).isEqualTo(0);
+        assertThat(CMakeCompletionProvider.indexOfWhitespace(asLine(""))).isEqualTo(-1);
     }
 
 
@@ -85,6 +74,11 @@ public class CMakeCompletionProviderTest
         comp.setText(str);
 
         return (StyledDocument) comp.getDocument();
+    }
+
+    private char[] asLine(String s)
+    {
+        return s.toCharArray();
     }
 
 
