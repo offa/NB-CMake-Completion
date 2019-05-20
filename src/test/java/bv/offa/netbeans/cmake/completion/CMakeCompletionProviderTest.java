@@ -17,7 +17,6 @@
  * You should have received a copy of the GNU General Public License
  * along with NB CMake Completion.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package bv.offa.netbeans.cmake.completion;
 
 import static com.google.common.truth.Truth.assertThat;
@@ -69,27 +68,20 @@ public class CMakeCompletionProviderTest
 
 
     @Test
-    public void getRowFirstNonWhitespace()
+    public void getRowFirstNonWhitespace() throws BadLocationException
     {
-        try
-        {
-            StyledDocument doc = makeDocument("");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
-            doc = makeDocument("abc");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
-            doc = makeDocument(" a");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
-            doc = makeDocument("\tb");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
-            doc = makeDocument("\n b");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1)).isEqualTo(2);
-            doc = makeDocument("         h 4");
-            assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(9);
-        }
-        catch( BadLocationException ex )
-        {
-            fail(ex.getMessage());
-        }
+        StyledDocument doc = makeDocument("");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
+        doc = makeDocument("abc");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
+        doc = makeDocument(" a");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
+        doc = makeDocument("\tb");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
+        doc = makeDocument("\n b");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1)).isEqualTo(2);
+        doc = makeDocument("         h 4");
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(9);
     }
 
 
@@ -100,4 +92,6 @@ public class CMakeCompletionProviderTest
 
         return (StyledDocument) comp.getDocument();
     }
+
+
 }
