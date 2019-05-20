@@ -70,18 +70,12 @@ public class CMakeCompletionProviderTest
     @Test
     public void getRowFirstNonWhitespace() throws BadLocationException
     {
-        StyledDocument doc = makeDocument("");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
-        doc = makeDocument("abc");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(0);
-        doc = makeDocument(" a");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
-        doc = makeDocument("\tb");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(1);
-        doc = makeDocument("\n b");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 1)).isEqualTo(2);
-        doc = makeDocument("         h 4");
-        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(doc, 0)).isEqualTo(9);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument(""), 0)).isEqualTo(0);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument("abc"), 0)).isEqualTo(0);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument(" a"), 0)).isEqualTo(1);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument("\tb"), 0)).isEqualTo(1);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument("\n b"), 1)).isEqualTo(2);
+        assertThat(CMakeCompletionProvider.getRowFirstNonWhitespace(makeDocument("         h 4"), 0)).isEqualTo(9);
     }
 
 
