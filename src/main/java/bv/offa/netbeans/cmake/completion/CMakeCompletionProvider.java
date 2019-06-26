@@ -199,22 +199,18 @@ public class CMakeCompletionProvider implements CompletionProvider
      */
     private int getVariableExpansionOffset(String str)
     {
-        int n;
-
         if( str.endsWith("${") )
         {
-            n = 2;
+            return 2;
         }
         else if( str.endsWith("$") )
         {
-            n = 1;
+            return 1;
         }
         else
         {
-            n = 0;
+            return 0;
         }
-
-        return n;
     }
 
 
