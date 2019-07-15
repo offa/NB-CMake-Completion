@@ -140,6 +140,7 @@
                 <version>3.12.0</version>
                 <configuration>
                     <targetJdk>${javaVersion}</targetJdk>
+                    <linkXref>false</linkXref>
                 </configuration>
             </plugin>
         </plugins>
