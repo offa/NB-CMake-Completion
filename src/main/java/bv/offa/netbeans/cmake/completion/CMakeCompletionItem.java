@@ -141,7 +141,7 @@ public class CMakeCompletionItem implements CompletionItem
                                         null,
                                         g,
                                         defaultFont,
-                                        ( selected == true ? Color.white : FIELD_COLOR ),
+                                        selected ? Color.white : FIELD_COLOR,
                                         width,
                                         height,
                                         selected);
