@@ -1,7 +1,7 @@
 /*
  * NB CMake Completion - CMake completion for NetBeans.
  * Copyright (C) 2015-2019  offa
- * 
+ *
  * This file is part of NB CMake Completion.
  *
  * NB CMake Completion is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ import org.openide.util.Exceptions;
 /**
  * The class {@code CMakeCompletionItem} represents a
  * {@link CompletionItem Completion item}.
- * 
+ *
  * @author  offa
  */
 public class CMakeCompletionItem implements CompletionItem
@@ -56,13 +56,13 @@ public class CMakeCompletionItem implements CompletionItem
         this.dotOffset = dotOffset;
         this.caretOffset = caretOffset;
     }
-    
-    
+
+
     /**
      * Action for this item.
-     * 
+     *
      * @param component         Component for which the completion was invoced
-     * @see                     CompletionItem#defaultAction(JTextComponent) 
+     * @see                     CompletionItem#defaultAction(JTextComponent)
      */
     @Override
     public void defaultAction(JTextComponent component)
@@ -72,7 +72,7 @@ public class CMakeCompletionItem implements CompletionItem
             StyledDocument doc = (StyledDocument) component.getDocument();
             doc.remove(dotOffset, caretOffset - dotOffset);
             doc.insertString(dotOffset, formatItemText(), null);
-            
+
             switch(type)
             {
                 case FUNCTION:
@@ -82,7 +82,7 @@ public class CMakeCompletionItem implements CompletionItem
                 default:
                     break;
             }
-            
+
             Completion.get().hideAll();
         }
         catch( BadLocationException ex )
@@ -91,12 +91,12 @@ public class CMakeCompletionItem implements CompletionItem
         }
     }
 
-    
+
     /**
      * Process the key event.
-     * 
+     *
      * @param evt       Key vent
-     * @see             CompletionItem#processKeyEvent(KeyEvent) 
+     * @see             CompletionItem#processKeyEvent(KeyEvent)
      */
     @Override
     public void processKeyEvent(KeyEvent evt)
@@ -104,14 +104,14 @@ public class CMakeCompletionItem implements CompletionItem
         /* Empty */
     }
 
-    
+
     /**
      * Get preferred visual width.
-     * 
+     *
      * @param g             Graphics
      * @param defaultFont   Default font
      * @return              Rendering width ({@code >= 0})
-     * @see                 CompletionItem#getPreferredWidth(Graphics, Font) 
+     * @see                 CompletionItem#getPreferredWidth(Graphics, Font)
      */
     @Override
     public int getPreferredWidth(Graphics g, Font defaultFont)
@@ -119,10 +119,10 @@ public class CMakeCompletionItem implements CompletionItem
         return CompletionUtilities.getPreferredWidth(formatItemText(), null, g, defaultFont);
     }
 
-    
+
     /**
      * Renders the item to the graphics.
-     * 
+     *
      * @param g                 Graphics
      * @param defaultFont       Default font
      * @param defaultColor      Default color
@@ -130,29 +130,29 @@ public class CMakeCompletionItem implements CompletionItem
      * @param width             Width
      * @param height            Height
      * @param selected          Selected
-     * @see CompletionItem#render(Graphics, Font, Color, Color, int, int, boolean) 
+     * @see CompletionItem#render(Graphics, Font, Color, Color, int, int, boolean)
      */
     @Override
-    public void render(Graphics g, Font defaultFont, Color defaultColor, 
+    public void render(Graphics g, Font defaultFont, Color defaultColor,
             Color backgroundColor, int width, int height, boolean selected)
     {
         CompletionUtilities.renderHtml(FIELD_ICON,
                                         formatItemText(),
                                         null,
                                         g,
-                                        defaultFont, 
+                                        defaultFont,
                                         ( selected == true ? Color.white : FIELD_COLOR ),
                                         width,
                                         height,
                                         selected);
     }
 
-    
+
     /**
      * Creates a documentation task.
-     * 
+     *
      * @return      Documentation task
-     * @see         CompletionItem#createDocumentationTask() 
+     * @see         CompletionItem#createDocumentationTask()
      */
     @Override
     public CompletionTask createDocumentationTask()
@@ -160,12 +160,12 @@ public class CMakeCompletionItem implements CompletionItem
         return null;
     }
 
-    
+
     /**
      * Creates a tooltip task.
-     * 
+     *
      * @return      Completion task
-     * @see         CompletionItem#createToolTipTask() 
+     * @see         CompletionItem#createToolTipTask()
      */
     @Override
     public CompletionTask createToolTipTask()
@@ -173,14 +173,14 @@ public class CMakeCompletionItem implements CompletionItem
         return null;
     }
 
-    
+
     /**
      * Returns whether there should be an instanstant subsititution for the
      * component.
-     * 
+     *
      * @param component     Component for which the completion was invoced
      * @return              Returns if there should be an instant substitution
-     * @see                 CompletionItem#instantSubstitution(JTextComponent) 
+     * @see                 CompletionItem#instantSubstitution(JTextComponent)
      */
     @Override
     public boolean instantSubstitution(JTextComponent component)
@@ -188,12 +188,12 @@ public class CMakeCompletionItem implements CompletionItem
         return false;
     }
 
-    
+
     /**
      * Returns the item's priority.
-     * 
+     *
      * @return      Sortpriority
-     * @see         CompletionItem#getSortPriority() 
+     * @see         CompletionItem#getSortPriority()
      */
     @Override
     public int getSortPriority()
@@ -201,12 +201,12 @@ public class CMakeCompletionItem implements CompletionItem
         return 0;
     }
 
-    
+
     /**
      * Returns a text to sort the item.
-     * 
+     *
      * @return      Returns the text
-     * @see         CompletionItem#getSortText() 
+     * @see         CompletionItem#getSortText()
      */
     @Override
     public CharSequence getSortText()
@@ -214,23 +214,23 @@ public class CMakeCompletionItem implements CompletionItem
         return text;
     }
 
-    
+
     /**
      * Returns a text used for finding of a longest common prefix.
-     * 
+     *
      * @return      Returns the text
-     * @see         CompletionItem#getInsertPrefix() 
+     * @see         CompletionItem#getInsertPrefix()
      */
     @Override
     public CharSequence getInsertPrefix()
     {
         return text;
     }
-    
-    
+
+
     /**
      * Formats the {@code text} of the item, depending on it's type.
-     * 
+     *
      * @return      Formated {@code text}
      */
     String formatItemText()
@@ -245,13 +245,13 @@ public class CMakeCompletionItem implements CompletionItem
                 return text;
         }
     }
-    
-    
-    
+
+
+
     /**
      * Enumeration of item types.
      */
-    public static enum ItemType
+    public enum ItemType
     {
         /** Function or macro. */
         FUNCTION,
