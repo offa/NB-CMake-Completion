@@ -1,7 +1,6 @@
 # NB CMake Completion
 
 [![CI](https://github.com/offa/NB-CMake-Completion/workflows/ci/badge.svg)](https://github.com/offa/NB-CMake-Completion/actions)
-[![Build Status](https://travis-ci.org/offa/NB-CMake-Completion.svg?branch=master)](https://travis-ci.org/offa/NB-CMake-Completion)
 [![GitHub release](https://img.shields.io/github/release/offa/NB-Cmake-Completion.svg)](https://github.com/offa/NB-Cmake-Completion/releases)
 [![License](https://img.shields.io/badge/license-GPLv3-yellow.svg)](LICENSE)
 [![NetBeans](https://img.shields.io/badge/netbeans-8.2-lightgrey.svg)](http://plugins.netbeans.org/plugin/63633/cmake-completion)
