@@ -14,6 +14,11 @@ CMake Completion provides code completion for CMake files.
  - [**NetBeans 8.2**](https://netbeans.org)
  - [**CMake**](http://cmake.org) *(Optional)*
 
+#### Compatibility Note:
+
+NetBeans releases newer than 8.x don't support C / C++ yet.
+
+
 # Installation
 
 The Plugin is available through the **Plugin Manager** (*Tools → Plugins → Available Plugins*).
